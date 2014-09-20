@@ -45,9 +45,11 @@ angular.module('banterApp')
       recognition.onresult = function(event) {
         var interim_transcript = '';
 
+        var speechList = "";
         for (var i = event.resultIndex; i < event.results.length; ++i) {
           console.log(event.results[i][0].transcript);
           var word = event.results[i][0].transcript;
+          speechList += word + " ";
 
           if(!event.results[i].isFinal) {
             return;
@@ -70,6 +72,8 @@ angular.module('banterApp')
             }
           }
         }
+        var score = similarity(speechList, $scope.slideCurrent);
+        $scope.slideCurrent.results = score;
       }
 
       recognition.onerror = function(event) {
@@ -172,7 +176,7 @@ angular.module('banterApp')
       $scope.presentation.slides.push({
         'content': '<h1>Header</h1><p>Content</p>',
         'keywords': ['Keyword'],
-        'results' : ['0','0']
+        'results' : [0,0]
       });
       $('.slide').last().velocity({ top: -400 * slideIndex + 'px' });
       $scope.$apply();
