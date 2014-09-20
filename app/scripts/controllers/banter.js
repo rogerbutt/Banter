@@ -68,21 +68,26 @@ angular.module('banterApp')
     };
 
     $scope.slideCurrent = $scope.presentation.slides[0];
-    $scope.slideIndex = 0;
+    var slideIndex = 0;
+    var displace = 0;
 
     $('#forward').click(function() {
-      console.log($scope.presentation.slides.length);
-      if($scope.slideIndex < $scope.presentation.slides.length - 1) {
-        $('.slide').velocity({ translateY: '-= 400px'});
-        $scope.slideIndex++;
-        $scope.slideCurrent = $scope.presentation.slides[$scope.slideIndex];
+      if(slideIndex < $scope.presentation.slides.length - 1) {
+        slideIndex++;
+        displace = slideIndex * -400;
+        $('.slide').velocity({ translateY: displace + 'px'});
+        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
+        $scope.$apply();
       }
     });
+    
     $('#backward').click(function() {
-      if($scope.slideIndex > 0) {
-        $('.slide').velocity({ translateY: '+= 400px'});
-        $scope.slideIndex--;
-        $scope.slideCurrent = $scope.presentation.slides[$scope.slideIndex];
+      if(slideIndex > 0) {
+        slideIndex--;
+        displace = slideIndex * -400;
+        $('.slide').velocity({ translateY: displace + 'px'});
+        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
+        $scope.$apply();
       }
     });
 
@@ -91,6 +96,7 @@ angular.module('banterApp')
         'content': '<h1>Header</h1><p>Content</p>',
         'keywords': ['Keyword']
       });
+      $('.slide').last().velocity({ top: -400 * slideIndex + 'px' });
       $scope.$apply();
     });
   });
