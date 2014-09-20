@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="play" unicode="&#xe800;" d="m0-61v822q0 14 9 20t22-2l741-412q13-7 13-17t-13-17l-741-412q-13-7-22-2t-9 20z" horiz-adv-x="785.7" />
+<glyph glyph-name="play-1" unicode="&#xe801;" d="m486 376q14-10 14-26 0-14-14-24l-428-266q-24-16-41-6t-17 40l0 514q0 30 17 40t41-6z" horiz-adv-x="500" />
+<glyph glyph-name="stop" unicode="&#xe802;" d="m526 650q74 0 74-64l0-470q0-66-74-66l-450 0q-76 0-76 66l0 470q0 36 18 50t58 14l450 0z" horiz-adv-x="600" />
+<glyph glyph-name="to-end" unicode="&#xe803;" d="m412 374q14-10 14-24 0-12-14-22l-362-228q-22-14-36-5t-14 35l0 442q0 26 14 35t36-5z m114 268q74 0 74-58l0-466q0-58-74-58-76 0-76 58l0 466q0 58 76 58z" horiz-adv-x="600" />
+<glyph glyph-name="to-start" unicode="&#xe804;" d="m174 350q0 14 14 24l364 228q20 14 34 5t14-35l0-442q0-26-14-35t-34 5l-364 228q-14 10-14 22z m-174 234q0 58 76 58 74 0 74-58l0-466q0-58-74-58-76 0-76 58l0 466z" horiz-adv-x="600" />
+<glyph glyph-name="plus" unicode="&#xe805;" d="m550 400q30 0 30-50t-30-50l-210 0 0-210q0-30-50-30t-50 30l0 210-210 0q-30 0-30 50t30 50l210 0 0 210q0 30 50 30t50-30l0-210 210 0z" horiz-adv-x="580" />
+</font>
+</defs>
+</svg>
