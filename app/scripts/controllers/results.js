@@ -16,6 +16,6 @@ angular.module('banterApp')
     // download the data into a local object
     sync.$bindTo($scope, "presentation").then(function() {
       $scope.$apply();
-    });
-    
+    });    
   }]);
+

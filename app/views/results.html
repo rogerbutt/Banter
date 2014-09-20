@@ -1,3 +1,8 @@
-<h1>Results</h1>
+<script src="../scripts/d3.min.js" charset="utf-8"></script>
+<script src="../scripts/c3.min.js"></script>
+<link href="../styles/c3.css" rel="stylesheet" type="text/css">
 
+
+<h1>Results</h1>
 <p ng-repeat="slide in presentation.slides">Slide {{$index}}: Similarity Score: {{slide.results[0] || 0}}</p>
+<div id = "chart"></div>
