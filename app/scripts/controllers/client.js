@@ -52,7 +52,6 @@ angular.module('banterApp')
       switch(val) {
         case 5:
           $('.ratings .icon-star:nth-child(5)').css("color", '#f1c40f');
-          console.log('here');
         case 4:
           $('.ratings .icon-star:nth-child(4)').css("color", '#f1c40f');
         case 3:

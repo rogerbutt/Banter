@@ -1,1 +1,3 @@
-<p>This is the results view.</p>
+<h1>Results</h1>
+
+<p ng-repeat="slide in presentation.slides">Slide {{$index}}: Similarity Score: {{slide.results[0] || 0}}</p>

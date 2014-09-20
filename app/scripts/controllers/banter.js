@@ -9,6 +9,38 @@ angular.module('banterApp')
       'Karma'
     ];
 
+    function similarity(speechText, slideJson)
+    {
+      var avgScore = slideJson.results[0] || 0;
+      var numChecks = slideJson.results[1] || 0;
+      var slideText = slideJson.content;
+      slideText.replace("\<.*?\>", "");
+
+      var lastBack = speechText.lastIndexOf("back");
+      var lastNext = speechText.lastIndexOf("next");
+      if(lastNext > lastBack)
+        var lastIndex = lastNext;
+      else
+        var lastIndex = lastBack;
+
+      speechText = speechText.substring(lastIndex + 3);
+      var speechLength = speechText.length;
+      if(speechLength == 0)
+        return [0,0];
+
+      var slideTextLength = slideText.length;
+      var diffLength = slideTextLength - speechLength;
+      if(diffLength < 0)
+        diffLength = 0;
+
+      console.log(slideText);
+
+      var leven = new Levenshtein(slideText, speechText);
+      var score = (1 - ((leven - diffLength)/speechLength));
+      avgScore = (avgScore + score)/(numChecks + 1);
+      return [avgScore, (numChecks + 1)];
+    }
+
     function moveForward() {
       if($scope.presentation.index < $scope.presentation.slides.length - 1) {
         $scope.presentation.slides[$scope.presentation.index] = $scope.slideCurrent;
@@ -66,14 +98,18 @@ angular.module('banterApp')
           }
 
           for(var j = 0; j < $scope.slideCurrent.keywords.length; j++) {
-            if(word.indexOf($scope.slideCurrent.keywords[j].toLowerCase()) > -1) {
+            if($scope.slideCurrent.keywords[j].length > 0 && word.indexOf($scope.slideCurrent.keywords[j].toLowerCase()) > -1) {
               moveForward();
               return;
             }
           }
         }
-        var score = similarity(speechList, $scope.slideCurrent);
-        $scope.slideCurrent.results = score;
+
+        if(speechList != null) {
+          var score = similarity(speechList, $scope.slideCurrent);
+          $scope.slideCurrent.results = score;
+          $scope.presentation.slides[$scope.presentation.index] = $scope.slideCurrent;
+        }
       }
 
       recognition.onerror = function(event) {
@@ -107,6 +143,7 @@ angular.module('banterApp')
         recognition.stop();
       }
 
+      $scope.presentation.slides[$scope.presentation.index] = $scope.slideCurrent;
       passPresentation.setPresentation($scope.presentation);
 
       $location.path('/results');
@@ -153,8 +190,10 @@ angular.module('banterApp')
         addPen();
       }, 100, false);
 
-
-      $scope.$apply();
+      if(!$scope.$$phase) {
+        //$digest or $apply
+        $scope.$apply();
+      }
     });
 
     var displace = 0;

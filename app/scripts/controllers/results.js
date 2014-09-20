@@ -1,12 +1,21 @@
 'use strict';
 
 angular.module('banterApp')
-  .controller('ResultsCtrl', function ($scope, passPresentation) {
+  .controller('ResultsCtrl', [ "$scope", "$firebase", function ($scope, $firebase) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    $scope.presentation = passPresentation.getPresentation();
-  });
+    var ref = new Firebase("https://banterco.firebaseio.com/");
+    // create an AngularFire reference to the data
+    var sync = $firebase(ref);
+
+    var sync = $firebase(ref).$asObject();
+    // download the data into a local object
+    sync.$bindTo($scope, "presentation").then(function() {
+      $scope.$apply();
+    });
+    
+  }]);
