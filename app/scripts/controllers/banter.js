@@ -218,8 +218,8 @@ angular.module('banterApp')
         'keywords': ['Keyword'],
         'results' : [0,0]
       });
-      $('.slide').last().velocity({ top: -400 * $scope.presentation.index + 'px' });
       $scope.$apply();
+      $('.slide').last().velocity({ top: -400 * $scope.presentation.index + 'px' });
       $timeout(function() {
         addPen();
       }, 10, false);
