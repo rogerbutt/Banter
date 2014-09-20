@@ -19,12 +19,15 @@ angular.module('banterApp')
         $scope.$apply();
       }
     });
-  }]);
-
-    var chart = c3.generate({
+      var chart = c3.generate({
       bindto:"#chart",
       data: {
-        columns:
-        ['data1',30,20,100,50,30]
+        x:"x",
+        columns:[
+        ['x',30,20,100,50,150],
+        ['Similarity',50,10,60,30,60]
+        ]
       }
     })
+
+  }]);
