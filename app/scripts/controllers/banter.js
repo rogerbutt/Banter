@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('banterApp')
-  .controller('BanterCtrl', function ($scope, $sce, $timeout) {
+  .controller('BanterCtrl', function ($scope, $sce, $timeout, $location, passPresentation) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -89,9 +89,16 @@ angular.module('banterApp')
         recording = false;
         recognition.stop();
       }
+
+      passPresentation.setPresentation($scope.presentation);
+
+      $location.path('/results');
+      $scope.$apply();
     });
 
     $scope.presentation = {
+      'title': 'Banter Presentation',
+      'owner': 'Chris Chan',
       'slides': [
         {
           'content': '<h1>Slide 1</h1>',
