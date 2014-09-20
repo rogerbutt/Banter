@@ -1,12 +1,10 @@
-<p id="transcript"></p>
-
 <h1 class="title">{{presentation.title}}</h1>
 <h4 style="color: white">{{presentation.owner}}</h4>
 
 
 <div class="panel-containers">
   <div id="slide-viewport">
-    <div ng-repeat="slide in presentation.slides" class="slide" ng-model="slide.content" contenteditable ng-bind-html="slide.content">
+    <div ng-repeat="slide in presentation.slides" class="slide" ng-model="slide.content" contenteditable ng-bind-html="slide.content" ng-blur="updateSlide($event, $index)">
     </div>
   </div>
 
@@ -21,7 +19,7 @@
     <div class='keywords'>
       <h3>Keywords</h3>
       <div ng-repeat="keyword in slideCurrent.keywords">
-        <input type="text" ng-model="keyword" value={{keyword}} ng-change="updateKeywords(keyword, $index)">
+        <input type="text" ng-model="keyword" value={{keyword}} ng-change="updateKeywords($index)">
         </input>{{keyword}}
       </div>
     </div>

@@ -79,6 +79,11 @@ angular.module('banterApp')
       }
     }
 
+    $scope.updateSlide = function(event, i) {
+      console.log(event.target.innerHTML);
+      $scope.presentation.slides[i].content = event.target.innerHTML;
+    };
+
     var final_transcript = '';
     var recording = false;
 
@@ -107,7 +112,7 @@ angular.module('banterApp')
     var sync = $firebase(ref).$asObject();
     // download the data into a local object
 
-    $scope.presentation = {
+    /*$scope.presentation = {
       'title': 'Banter Presentation',
       'owner': 'Chris Chan',
       'slides': [
@@ -122,7 +127,7 @@ angular.module('banterApp')
           'results' : ''
         }
       ]
-    };
+    };*/
 
     sync.$bindTo($scope, "presentation").then(function() {
       $scope.slideCurrent = $scope.presentation.slides[0];

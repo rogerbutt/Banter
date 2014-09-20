@@ -25,6 +25,10 @@ angular.module('banterApp', [
         templateUrl: 'views/menu.html',
         controller: 'ResultsCtrl'
       })
+      .when('/client', {
+        templateUrl: 'views/client.html',
+        controller: 'ClientCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
