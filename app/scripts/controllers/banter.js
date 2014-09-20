@@ -54,16 +54,41 @@ angular.module('banterApp')
       }
     });
 
-
-
     $scope.presentation = {
       'slides': [
         {
           'content': '<h1>Slide 1</h1>',
           'keywords': ['toast']
+        },
+        {
+          'content': '<h1>MONEY</h1>',
+          'keywords': ['Money']
         }
       ]
     };
 
     $scope.slideCurrent = $scope.presentation.slides[0];
+    $scope.slideIndex = 0;
+
+    $('#forward').click(function() {
+      console.log($scope.presentation.slides.length);
+      if($scope.slideIndex < $scope.presentation.slides.length - 1) {
+        $('.slide').velocity({ translateY: '-= 400px'});
+        $scope.slideIndex++;
+        $scope.slideCurrent = $scope.presentation.slides[$scope.slideIndex];
+      }
+    });
+    $('#backward').click(function() {
+      if($scope.slideIndex > 0) {
+        $('.slide').velocity({ translateY: '+= 400px'});
+        $scope.slideIndex--;
+        $scope.slideCurrent = $scope.presentation.slides[$scope.slideIndex];
+      }
+    });
+
+    $('#addSlide').click(function() {
+      $scope.$scope.presentation.slides.append({
+        'content': '<h1>Header</h1><p>Content</p>';
+      });
+    });
   });
