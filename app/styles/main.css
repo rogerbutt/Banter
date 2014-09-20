@@ -201,23 +201,21 @@ margin-left: 68px;
 
 .chatbox{
   margin-top:30px;
-  width:95%;
-  height:279px;
-  background-color: rgba(255, 255, 255, 0.89);
-  margin:auto;
-}
-.inputbox{
-  width:95%;
-  background-color: rgba(255, 255, 255, 0.89);
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  font-weight:100;
-  margin:auto;
-  display:block;
-}
-.chatArea{
-    background-color: rgba(255, 255, 255, 0.2);
   width:100%;
-  height:350px;
+  height:150px;
+  background-color: rgba(255, 255, 255, 0.89);
+  margin:auto;
+  resize:none;
+}
+.submit{
+  width:100%;
+  height:34px;
+  background-color: #27ae60;
+  border:0;
+  font-weight:100;
+  color:#fff;
+  font-size:20px;
+}
+.active{
+  color:#f1c40f;
 }
