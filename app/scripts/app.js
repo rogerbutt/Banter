@@ -11,7 +11,6 @@ angular.module('banterApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'views/menu.html',
-        controller: 'MenuCtrl'
       })
       .when('/banter', {
         templateUrl: 'views/banter.html',
