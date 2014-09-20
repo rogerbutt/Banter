@@ -84,11 +84,20 @@ ul{
   margin: 5px;
   font-weight:100;
 }
-#start > .icon-play{
-  font-size: 13px;
+.icon-to-start:hover{
+  opacity:1;
+  -webkit-transition-duration: 1s;
+
 }
-#end > .icon-stop{
-  font-size: 16px;
+.icon-to-end:hover{
+  opacity:1;
+  -webkit-transition-duration: 1s;
+
+}
+.icon-plus:hover{
+  opacity:1;
+  -webkit-transition-duration: 1s;
+
 }
 .controls > i{
   font-size:30px;
@@ -102,6 +111,9 @@ ul{
 }
 #end {
   background-color: #e74c3c;
+}
+.pen h1, .pen h2, .pen h3, .pen h4, .pen h5, .pen h6{
+  font-weight:100;
 }
 .keywords{
   background-color: rgba(255, 255, 255, 0.28);
