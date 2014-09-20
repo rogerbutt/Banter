@@ -79,4 +79,10 @@ angular.module('banterApp')
       }
     }
 
+    $('.submit').click(function() {
+      $scope.presentation.slides[$scope.presentation.index].comments = $scope.presentation.slides[$scope.presentation.index].comments || [];
+      $scope.presentation.slides[$scope.presentation.index].comments.push($('.chatbox').val());
+      $('.chatbox').val('');
+    });
+
   }]);
