@@ -278,3 +278,12 @@ margin-left: 50px;
 .active{
   color:#f1c40f;
 }
+.modal-content{
+  border-radius:0;
+}
+#returnHome{
+  border-radius:0;
+}
+#myModalLabel{
+  font-weight:200;
+}

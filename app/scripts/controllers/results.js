@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('banterApp')
-  .controller('ResultsCtrl', [ "$scope", "$firebase", function ($scope, $firebase) {
+  .controller('ResultsCtrl', [ "$scope", "$firebase", "$location", function ($scope, $firebase, $location) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -41,9 +41,11 @@ angular.module('banterApp')
         }
       });
     });
-$('#myModal').modal()
+
+    $("#returnHome").click(function(){
+      $location.path('/');
+      $scope.$apply();
+    });
+    $('#myModal').modal();
 
   }]);
-$("#returnHome").click(function(){
-  $('#myModal').modal('hide')
-})
