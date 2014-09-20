@@ -55,11 +55,15 @@ angular.module('banterApp')
     });
 
 
+
     $scope.presentation = {
       'slides': [
         {
-          'content': '<h1>Slide 1</h1>'
+          'content': '<h1>Slide 1</h1>',
+          'keywords': ['toast']
         }
       ]
     };
+
+    $scope.slideCurrent = $scope.presentation.slides[0];
   });

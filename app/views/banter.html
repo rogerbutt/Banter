@@ -10,7 +10,13 @@
   </div>
 
   <div class='control-panel-right'>
-    <button id="record">RECORD</button>
+    <button id="start">Start Presentation</button>
+    <button id="end">End Presentation</button>
+
+    <div class='keywords'>
+      <h1>Keywords</h1>
+      <p ng-repeat="keyword in slideCurrent.keywords">{{keyword}}</p>
+    </div>
   </div>
-  
+
 </div>
