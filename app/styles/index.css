@@ -1,0 +1,57 @@
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'Lato', Arial, sans-serif;
+  background-image: url("../images/home-header.jpg");
+}
+
+#record{
+  display:block;
+  margin:auto;
+  height:250px;
+  width:250px;
+}
+
+#inputBox{
+  height:300px;
+  width:700px;
+  margin:auto;
+  display:block;
+  border-radius:10px;
+  padding-left:1em;
+  padding-top:0;
+  padding-bottom:0.4em;
+  padding-right: 0.4em;
+  background-color:#ecf0f1;
+  margin-top:40px;
+}
+.gps_ring {
+    background-color:#e74c3c;
+    -webkit-border-radius: 300px;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    left:550px;
+    top:50px;
+    z-index:-1;
+    opacity: 0;
+}
+.active.gps_ring {
+    border: 2px solid #e74c3c;
+    -webkit-border-radius: 300px;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    left: 537px;
+    top: 50px;
+    z-index:-1;
+    -webkit-animation: pulsate 2s ease-out;
+    -webkit-animation-iteration-count: infinite; 
+    opacity: 0.0
+}
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
