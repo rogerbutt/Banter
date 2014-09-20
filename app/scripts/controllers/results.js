@@ -19,3 +19,10 @@ angular.module('banterApp')
     });    
   }]);
 
+    var chart = c3.generate({
+      bindto:"#chart",
+      data: {
+        columns:
+        ['data1',30,20,100,50,30]
+      }
+    })
