@@ -1,3 +1,4 @@
+
 <h1 class="title">{{presentation.title}}</h1>
 <h4 style="color: white">{{presentation.owner}}</h4>
 
@@ -7,4 +8,17 @@
     <div ng-repeat="slide in presentation.slides" class="slide" ng-model="slide.content" ng-bind-html="slide.content">
     </div>
   </div>
+</div>
+
+<div class='control-panel-right'>
+	<div class = "ratings">
+		<i class = "icon-star" value ="1"></i>
+		<i class = "icon-star" value ="1"></i>
+		<i class = "icon-star" value ="1"></i>
+		<i class = "icon-star"></i>
+		<i class = "icon-star"></i>
+	</div>
+	<div class = "chatbox"></div>
+	<input class = "inputbox"></input>
+
 </div>

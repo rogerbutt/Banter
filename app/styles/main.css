@@ -185,7 +185,10 @@ margin-left: 68px;
 .subtitle{
 
 }
-
+.icon-star{
+  font-size: 40px;
+  margin:2px;
+}
 .titleContainer{
   font-size:80px;
   margin-top:70px;
@@ -194,4 +197,19 @@ margin-left: 68px;
 .highlighted{
   background-color:#f1c40f;
   color:black;
+}
+
+.chatbox{
+  margin-top:30px;
+  width:100%;
+  height:279px;
+  background-color: rgba(255, 255, 255, 0.89);
+}
+.inputbox{
+  width:100%;
+  background-color: rgba(255, 255, 255, 0.89);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  font-weight:100;
 }
