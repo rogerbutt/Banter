@@ -9,17 +9,19 @@
   </div>
 
   <div class='control-panel-right'>
-    <button id="start"><i class = "icon-play"></i>Start Presentation</button>
-    <button id="end"><i class = "icon-stop"></i>End Presentation</button>
-    <div class="controls">
-      <i id="backward" class = "pe-7s-angle-left"></i>
-      <i id="addslide" class = "pe-7s-note"></i>
-      <i id="forward" class = "pe-7s-angle-right"></i>
-    </div>
+    <button id="start">Start Presentation</button>
+    <button id="end">End Presentation</button>
     <div class='keywords'>
+
+      <div class="controls">
+        <i id="backward" class = "pe-7s-angle-left"></i>
+        <i id="addslide" class = "pe-7s-note"></i>
+        <i id="forward" class = "pe-7s-angle-right"></i>
+      </div>
+
       <h3>Keywords</h3>
       <div ng-repeat="keyword in slideCurrent.keywords">
-        <input type="text" ng-model="keyword" value={{keyword}} ng-change="updateKeywords($index)">
+        <input type="text" class="inputkeyword" ng-model="keyword" value={{keyword}} ng-blur="updateKeywords(keyword, $index)">
         </input>
       </div>
       <button id="addKeyword">Add Keyword</button>

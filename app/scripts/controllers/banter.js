@@ -199,8 +199,9 @@ angular.module('banterApp')
     var displace = 0;
 
     $scope.updateKeywords = function(word, i) {
-      console.log(i);
+      console.log(word);
       $scope.slideCurrent.keywords[i] = word;
+      $scope.presentation.slides[$scope.presentation.index] = $scope.slideCurrent;
     };
 
     $('#forward').click(function() {

@@ -79,15 +79,23 @@ ul{
 
 #start, #end {
   border: none;
-  background-color: #2ecc71;
-  color: white;
-  font-family: Helvetica;
+  background-color: #f1c40f;
+  color: #333333;
+  font-family: 'BebasNeue';
   /*border-radius: 4px;*/
   width: 147px;
   height: 40px;
   margin: 5px;
-  font-weight:100;
+  font-weight:normal;
 }
+
+.inputkeyword {
+  outline: none;
+  background-color: transparent;
+  color: white;
+  border: 1px solid transparent;
+}
+
 .pe-7s-angle-left:hover{
   opacity:1;
   -webkit-transition-duration: 1s;
@@ -110,24 +118,24 @@ ul{
 .controls > i{
   font-size:40px;
   font-weight:200px;
-  border: 1px solid #FFF;
   opacity:.5;
   padding-left:16px;
   padding-right:16px;
   margin:5px;
 }
 .controls > .pe-7s-note{
-margin-right: 68px;
-margin-left: 68px;
+margin-right: 50px;
+margin-left: 50px;
 }
 #end {
-  background-color: #e74c3c;
+  background-color: white;
 }
 .pen h1, .pen h2, .pen h3, .pen h4, .pen h5, .pen h6{
   font-weight:100;
 }
 .keywords{
-  background-color: rgba(255, 255, 255, 0.28);
+  height: 346px;
+  background-color: #222222;
   padding-left: 15px;
   padding-top: 1px;
   margin: 5px;
