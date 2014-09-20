@@ -87,8 +87,10 @@ angular.module('banterApp')
     });
 
     $('#addSlide').click(function() {
-      $scope.$scope.presentation.slides.append({
-        'content': '<h1>Header</h1><p>Content</p>';
+      $scope.presentation.slides.push({
+        'content': '<h1>Header</h1><p>Content</p>',
+        'keywords': ['Keyword']
       });
+      $scope.$apply();
     });
   });
