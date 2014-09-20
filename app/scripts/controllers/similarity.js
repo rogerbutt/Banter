@@ -1,7 +1,6 @@
-function similarity(speechText, slideJson, currSlide)
+function similarity(speechText, slideJson, avgScore, numChecks)
 {
-	var slides = slideJson.slides;
-	var slideText = slides[currSlide].content;
+	var slideText = slideJson.content;
 	slideText.replace("\<.*?\>", "");
 
 	var speechLength = speechText.length;
@@ -12,5 +11,6 @@ function similarity(speechText, slideJson, currSlide)
 
 	var leven = new Levenshtein(slideText, speechText);
 	var score = (1 - ((leven - diffLength)/speechLength);
-	return score;
+	avgScore = (avgScore + score)/numChecks;
+	return avgScore;
 }
