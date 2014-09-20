@@ -84,30 +84,37 @@ ul{
   margin: 5px;
   font-weight:100;
 }
-.icon-to-start:hover{
+.pe-7s-angle-left:hover{
   opacity:1;
   -webkit-transition-duration: 1s;
 
 }
-.icon-to-end:hover{
+.pe-7s-angle-right:hover{
   opacity:1;
   -webkit-transition-duration: 1s;
 
 }
-.icon-plus:hover{
+.pe-7s-note:hover{
   opacity:1;
   -webkit-transition-duration: 1s;
 
+}
+.controls{
+  margin-top:15px;
+  margin-bottom:15px;
 }
 .controls > i{
-  font-size:30px;
+  font-size:40px;
+  font-weight:200px;
   border: 1px solid #FFF;
-  opacity:.7;
+  opacity:.5;
+  padding-left:16px;
+  padding-right:16px;
   margin:5px;
 }
-.controls > .icon-plus{
-  margin-right: 78px;
-  margin-left: 78px;
+.controls > .pe-7s-note{
+margin-right: 68px;
+margin-left: 68px;
 }
 #end {
   background-color: #e74c3c;
