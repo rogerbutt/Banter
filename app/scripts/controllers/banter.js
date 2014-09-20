@@ -107,24 +107,24 @@ angular.module('banterApp')
     var sync = $firebase(ref).$asObject();
     // download the data into a local object
 
-    sync.$bindTo($scope, "data").then(function() {
-      $scope.presentation = {
-        'title': 'Banter Presentation',
-        'owner': 'Chris Chan',
-        'slides': [
-          {
-            'content': '<h1>Slide 1</h1>',
-            'keywords': ['toast'],
-            'results' : ''
-          },
-          {
-            'content': '<h1>MONEY</h1>',
-            'keywords': ['Money'],
-            'results' : ''
-          }
-        ]
-      };
+    $scope.presentation = {
+      'title': 'Banter Presentation',
+      'owner': 'Chris Chan',
+      'slides': [
+        {
+          'content': '<h1>Slide 1</h1>',
+          'keywords': ['toast'],
+          'results' : ''
+        },
+        {
+          'content': '<h1>MONEY</h1>',
+          'keywords': ['Money'],
+          'results' : ''
+        }
+      ]
+    };
 
+    sync.$bindTo($scope, "presentation").then(function() {
       $scope.slideCurrent = $scope.presentation.slides[0];
     });
 
