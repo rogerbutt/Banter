@@ -10,23 +10,23 @@ angular.module('banterApp')
     ];
 
     function moveForward() {
-      if(slideIndex < $scope.presentation.slides.length - 1) {
-        $scope.presentation.slides[slideIndex] = $scope.slideCurrent;
-        slideIndex++;
-        displace = slideIndex * -400;
+      if($scope.presentation.index < $scope.presentation.slides.length - 1) {
+        $scope.presentation.slides[$scope.presentation.index] = $scope.slideCurrent;
+        $scope.presentation.index++;
+        displace = $scope.presentation.index * -400;
         $('.slide').velocity({ translateY: displace + 'px'});
-        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
+        $scope.slideCurrent = $scope.presentation.slides[$scope.presentation.index];
         $scope.$apply();
       }
     };
 
     function moveBackward() {
-      if(slideIndex > 0) {
-        $scope.presentation.slides[slideIndex] = $scope.slideCurrent;
-        slideIndex--;
-        displace = slideIndex * -400;
+      if($scope.presentation.index > 0) {
+        $scope.presentation.slides[$scope.presentation.index] = $scope.slideCurrent;
+        $scope.presentation.index--;
+        displace = $scope.presentation.index * -400;
         $('.slide').velocity({ translateY: displace + 'px'});
-        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
+        $scope.slideCurrent = $scope.presentation.slides[$scope.presentation.index];
         $scope.$apply();
       }
     };
@@ -147,6 +147,7 @@ angular.module('banterApp')
 
     sync.$bindTo($scope, "presentation").then(function() {
       $scope.slideCurrent = $scope.presentation.slides[0];
+      $scope.presentation.index = 0;
 
       $timeout(function() {
         addPen();
@@ -156,7 +157,6 @@ angular.module('banterApp')
       $scope.$apply();
     });
 
-    var slideIndex = 0;
     var displace = 0;
 
     $scope.updateKeywords = function(word, i) {
@@ -178,7 +178,7 @@ angular.module('banterApp')
         'keywords': ['Keyword'],
         'results' : [0,0]
       });
-      $('.slide').last().velocity({ top: -400 * slideIndex + 'px' });
+      $('.slide').last().velocity({ top: -400 * $scope.presentation.index + 'px' });
       $scope.$apply();
       $timeout(function() {
         addPen();
