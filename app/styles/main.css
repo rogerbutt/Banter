@@ -85,6 +85,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p{
   padding-left: 15px;
   padding-top: 1px;
   margin: 5px;
+  padding-bottom: 15px;
 }
 
 .keywords > h1{
