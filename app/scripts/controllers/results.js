@@ -15,8 +15,10 @@ angular.module('banterApp')
     var sync = $firebase(ref).$asObject();
     // download the data into a local object
     sync.$bindTo($scope, "presentation").then(function() {
-      $scope.$apply();
-    });    
+      if(!$scope.$$phase) {
+        $scope.$apply();
+      }
+    });
   }]);
 
     var chart = c3.generate({
