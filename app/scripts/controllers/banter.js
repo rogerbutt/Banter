@@ -8,6 +8,27 @@ angular.module('banterApp')
       'Karma'
     ];
 
+    function moveForward() {
+      if(slideIndex < $scope.presentation.slides.length - 1) {
+        slideIndex++;
+        displace = slideIndex * -400;
+        $('.slide').velocity({ translateY: displace + 'px'});
+        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
+        $scope.$apply();
+      }
+    };
+
+    function moveBackward() {
+      if(slideIndex > 0) {
+        slideIndex--;
+        displace = slideIndex * -400;
+        $('.slide').velocity({ translateY: displace + 'px'});
+        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
+        $scope.$apply();
+      }
+    };
+
+
     if (!('webkitSpeechRecognition' in window)) {
       alert('Only works in Chrome.');
     } else {
@@ -22,18 +43,31 @@ angular.module('banterApp')
         var interim_transcript = '';
 
         for (var i = event.resultIndex; i < event.results.length; ++i) {
-          if (event.results[i].isFinal) {
-            final_transcript += event.results[i][0].transcript;
-          } else {
-            interim_transcript += event.results[i][0].transcript;
+          console.log(event.results[i][0].transcript);
+          var word = event.results[i][0].transcript;
+          if(word.indexOf("next") > -1) {
+            moveForward();
+            return;
+          }
+
+          if(word.indexOf("back") > -1) {
+            moveBackward();
+            return;
+          }
+
+          for(var j = 0; j < $scope.slideCurrent.keywords.length; j++) {
+            if(word.indexOf($scope.slideCurrent.keywords[j]) > -1) {
+              moveForward();
+              return;
+            }
           }
         }
-
-        console.log(interim_transcript);
       }
+
       recognition.onerror = function(event) {
         console.log(event)
       }
+
       recognition.onend = function() {
         $('#transcript').text(final_transcript);
       }
@@ -42,13 +76,16 @@ angular.module('banterApp')
     var final_transcript = '';
     var recording = false;
 
-    $('#record').click(function() {
-
+    $('#start').click(function() {
       if(recording === false) {
         recording = true;
         recognition.lang = 'en-US';
         recognition.start();
-      } else {
+      }
+    });
+
+    $('#end').click(function() {
+      if(recording) {
         recording = false;
         recognition.stop();
       }
@@ -71,34 +108,28 @@ angular.module('banterApp')
     var slideIndex = 0;
     var displace = 0;
 
-    $timeout(function() {
+    function addPen() {
       $('.slide').each(function(i, el){
         var editor = new Pen({
           editor: el,
+          stay: false,
           list: ['bold', 'italic', 'underline', 'h1', 'h2', 'h3', 'insertorderedlist', 'insertunorderedlist']
         });
       });
+    };
+
+    $timeout(function() {
+      addPen();
     }, 100, false);
 
 
+
     $('#forward').click(function() {
-      if(slideIndex < $scope.presentation.slides.length - 1) {
-        slideIndex++;
-        displace = slideIndex * -400;
-        $('.slide').velocity({ translateY: displace + 'px'});
-        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
-        $scope.$apply();
-      }
+      moveForward();
     });
 
     $('#backward').click(function() {
-      if(slideIndex > 0) {
-        slideIndex--;
-        displace = slideIndex * -400;
-        $('.slide').velocity({ translateY: displace + 'px'});
-        $scope.slideCurrent = $scope.presentation.slides[slideIndex];
-        $scope.$apply();
-      }
+      moveBackward();
     });
 
     $('#addSlide').click(function() {
@@ -108,5 +139,8 @@ angular.module('banterApp')
       });
       $('.slide').last().velocity({ top: -400 * slideIndex + 'px' });
       $scope.$apply();
+      $timeout(function() {
+        addPen();
+      }, 10, false);
     });
   });
