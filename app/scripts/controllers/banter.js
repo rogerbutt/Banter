@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('banterApp')
-  .controller('BanterCtrl', function ($scope, $sce) {
+  .controller('BanterCtrl', function ($scope, $sce, $timeout) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -71,6 +71,16 @@ angular.module('banterApp')
     var slideIndex = 0;
     var displace = 0;
 
+    $timeout(function() {
+      $('.slide').each(function(i, el){
+        var editor = new Pen({
+          editor: el,
+          list: ['bold', 'italic', 'underline', 'h1', 'h2', 'h3', 'insertorderedlist', 'insertunorderedlist']
+        });
+      });
+    }, 100, false);
+
+
     $('#forward').click(function() {
       if(slideIndex < $scope.presentation.slides.length - 1) {
         slideIndex++;
@@ -80,7 +90,7 @@ angular.module('banterApp')
         $scope.$apply();
       }
     });
-    
+
     $('#backward').click(function() {
       if(slideIndex > 0) {
         slideIndex--;
