@@ -43,6 +43,22 @@ angular.module('banterApp')
     });
 
     var rating;
+    $(".icon-star").hover(function(){
+        var data = ["1star","2star","3star","4star","5star"];
+        var index = $(this).attr("value")
+        for(var i =0;i<index;i++)
+        {
+            var starz = data[i]
+            starz = "#"+starz;
+            $(starz).addClass("active");
+        }
+        for(var i =index;i<5;i++)
+        {
+            var starz = data[i]
+            starz = "#"+starz;
+            $(starz).removeClass("active");
+        }
+    })
 
     $scope.rate = function(val) {
       rating = val;
