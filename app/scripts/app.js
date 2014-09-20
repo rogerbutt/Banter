@@ -12,9 +12,9 @@ angular.module('banterApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/record', {
-        templateUrl: 'views/record.html',
-        controller: 'RecordCtrl'
+      .when('/banter', {
+        templateUrl: 'views/banter.html',
+        controller: 'BanterCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -1,0 +1,10 @@
+<button id="record">RECORD</button>
+
+
+<p id="transcript"></p>
+
+
+<div id="slide-viewport">
+  <div ng-repeat="slide in presentation.slides" class="slide" ng-model="slide.content" contenteditable ng-bind-html="slide.content">
+  </div>
+</div>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('banterApp')
-  .controller('RecordCtrl', function ($scope) {
+  .controller('BanterCtrl', function ($scope, $sce) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -9,15 +9,15 @@ angular.module('banterApp')
     ];
 
     if (!('webkitSpeechRecognition' in window)) {
-      upgrade();
+      alert('Only works in Chrome.');
     } else {
       var recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = true;
 
       recognition.onstart = function() {
-
       }
+
       recognition.onresult = function(event) {
         var interim_transcript = '';
 
@@ -32,7 +32,7 @@ angular.module('banterApp')
         console.log(interim_transcript);
       }
       recognition.onerror = function(event) {
-
+        console.log(event)
       }
       recognition.onend = function() {
         $('#transcript').text(final_transcript);
@@ -54,4 +54,12 @@ angular.module('banterApp')
       }
     });
 
+
+    $scope.presentation = {
+      'slides': [
+        {
+          'content': '<h1>Slide 1</h1>'
+        }
+      ]
+    };
   });
