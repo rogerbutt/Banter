@@ -102,11 +102,13 @@ angular.module('banterApp')
       'slides': [
         {
           'content': '<h1>Slide 1</h1>',
-          'keywords': ['toast']
+          'keywords': ['toast'],
+          'results' : ''
         },
         {
           'content': '<h1>MONEY</h1>',
-          'keywords': ['Money']
+          'keywords': ['Money'],
+          'results' : ''
         }
       ]
     };

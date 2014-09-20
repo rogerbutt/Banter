@@ -1,0 +1,4 @@
+function similarity(speechText, slideText)
+{
+	
+}
