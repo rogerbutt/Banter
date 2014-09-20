@@ -119,12 +119,12 @@ angular.module('banterApp')
         {
           'content': '<h1>Slide 1</h1>',
           'keywords': ['toast'],
-          'results' : ''
+          'results' : ['0','0']
         },
         {
           'content': '<h1>MONEY</h1>',
           'keywords': ['Money'],
-          'results' : ''
+          'results' : ['0','0']
         }
       ]
     };*/
@@ -166,7 +166,8 @@ angular.module('banterApp')
     $('#addslide').click(function() {
       $scope.presentation.slides.push({
         'content': '<h1>Header</h1><p>Content</p>',
-        'keywords': ['Keyword']
+        'keywords': ['Keyword'],
+        'results' : ['0','0']
       });
       $('.slide').last().velocity({ top: -400 * slideIndex + 'px' });
       $scope.$apply();
