@@ -31,7 +31,7 @@ angular.module('banterApp')
           $('.slide').velocity({ translateY: -400 * slideIndex + 'px'});
         }
 
-        if(numSLides != $scopre.presentation.slides.length) {
+        if(numSlides != $scope.presentation.slides.length) {
           $('.slide').last().velocity({ translateY: -400 * slideIndex + 'px'});
         }
 
