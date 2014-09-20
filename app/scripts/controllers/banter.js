@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('banterApp')
-  .controller('BanterCtrl', function ($scope, $sce, $timeout, $location, passPresentation) {
+  .controller('BanterCtrl', [ "$scope", "$sce", "$timeout", "$location", "passPresentation", "$firebase",
+  function ($scope, $sce, $timeout, $location, passPresentation, $firebase) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -101,24 +102,32 @@ angular.module('banterApp')
       $scope.$apply();
     });
 
-    $scope.presentation = {
-      'title': 'Banter Presentation',
-      'owner': 'Chris Chan',
-      'slides': [
-        {
-          'content': '<h1>Slide 1</h1>',
-          'keywords': ['toast'],
-          'results' : ''
-        },
-        {
-          'content': '<h1>MONEY</h1>',
-          'keywords': ['Money'],
-          'results' : ''
-        }
-      ]
-    };
+    var ref = new Firebase("https://banterco.firebaseio.com/");
+    // create an AngularFire reference to the data
+    var sync = $firebase(ref).$asObject();
+    // download the data into a local object
 
-    $scope.slideCurrent = $scope.presentation.slides[0];
+    sync.$bindTo($scope, "data").then(function() {
+      $scope.presentation = {
+        'title': 'Banter Presentation',
+        'owner': 'Chris Chan',
+        'slides': [
+          {
+            'content': '<h1>Slide 1</h1>',
+            'keywords': ['toast'],
+            'results' : ''
+          },
+          {
+            'content': '<h1>MONEY</h1>',
+            'keywords': ['Money'],
+            'results' : ''
+          }
+        ]
+      };
+
+      $scope.slideCurrent = $scope.presentation.slides[0];
+    });
+
     var slideIndex = 0;
     var displace = 0;
 
@@ -160,4 +169,5 @@ angular.module('banterApp')
         addPen();
       }, 10, false);
     });
-  });
+
+  }]);
