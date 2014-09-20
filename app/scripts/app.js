@@ -10,8 +10,8 @@ angular.module('banterApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/menu.html',
+        controller: 'MenuCtrl'
       })
       .when('/banter', {
         templateUrl: 'views/banter.html',
@@ -19,10 +19,6 @@ angular.module('banterApp', [
       })
       .when('/results', {
         templateUrl: 'views/results.html',
-        controller: 'ResultsCtrl'
-      })
-      .when('/menu', {
-        templateUrl: 'views/menu.html',
         controller: 'ResultsCtrl'
       })
       .when('/client', {

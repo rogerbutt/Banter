@@ -11,6 +11,7 @@ angular.module('banterApp')
 
     function moveForward() {
       if(slideIndex < $scope.presentation.slides.length - 1) {
+        $scope.presentation.slides[slideIndex] = $scope.slideCurrent;
         slideIndex++;
         displace = slideIndex * -400;
         $('.slide').velocity({ translateY: displace + 'px'});
@@ -21,6 +22,7 @@ angular.module('banterApp')
 
     function moveBackward() {
       if(slideIndex > 0) {
+        $scope.presentation.slides[slideIndex] = $scope.slideCurrent;
         slideIndex--;
         displace = slideIndex * -400;
         $('.slide').velocity({ translateY: displace + 'px'});
@@ -129,13 +131,6 @@ angular.module('banterApp')
       ]
     };*/
 
-    sync.$bindTo($scope, "presentation").then(function() {
-      $scope.slideCurrent = $scope.presentation.slides[0];
-    });
-
-    var slideIndex = 0;
-    var displace = 0;
-
     function addPen() {
       $('.slide').each(function(i, el){
         var editor = new Pen({
@@ -146,9 +141,19 @@ angular.module('banterApp')
       });
     };
 
-    $timeout(function() {
-      addPen();
-    }, 100, false);
+    sync.$bindTo($scope, "presentation").then(function() {
+      $scope.slideCurrent = $scope.presentation.slides[0];
+
+      $timeout(function() {
+        addPen();
+      }, 100, false);
+
+
+      $scope.$apply();
+    });
+
+    var slideIndex = 0;
+    var displace = 0;
 
     $scope.updateKeywords = function(word, i) {
       console.log(i);
@@ -174,6 +179,10 @@ angular.module('banterApp')
       $timeout(function() {
         addPen();
       }, 10, false);
+    });
+
+    $('#addKeyword').click(function() {
+      $scope.slideCurrent.keywords.push('');
     });
 
   }]);
