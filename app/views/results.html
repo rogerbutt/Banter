@@ -2,4 +2,24 @@
 
 <h1>Results</h1>
 <p ng-repeat="slide in presentation.slides">Slide {{$index}}: Similarity Score: {{slide.results[0] || 0}}</p>
-<div id = "chart"></div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Similarity Graph</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "containChart">
+			<div id = "chart">
+		
+			</div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <a href= "/#/"><button type="button" class="btn btn-default" id = "returnHome">Home</button></a>
+      </div>
+    </div>
+  </div>
+</div>

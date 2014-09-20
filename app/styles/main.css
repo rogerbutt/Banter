@@ -245,6 +245,7 @@ margin-left: 50px;
 }
 .chatArea{
   width:100%;
+
 }
 .highlighted{
   background-color:#f1c40f;
@@ -260,7 +261,10 @@ margin-left: 50px;
   resize:none;
 }
 #chart{
-  background-color:#fff;
+    background-color: rgba(236, 240, 241,.1)
+    height:80%;
+    width:80%;
+    margin:auto;
 }
 .submit{
   width:100%;

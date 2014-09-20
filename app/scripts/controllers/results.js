@@ -41,6 +41,9 @@ angular.module('banterApp')
         }
       });
     });
-
+$('#myModal').modal()
 
   }]);
+$("#returnHome").click(function(){
+  $('#myModal').modal('hide')
+})
