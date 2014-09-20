@@ -26,9 +26,11 @@ angular.module('banterApp')
         console.log("data changed!");
 
         if($scope.presentation.index != slideIndex) {
-          slideIndex = $scope.presentation.index
+          slideIndex = $scope.presentation.index;
 
           $('.slide').velocity({ translateY: -400 * slideIndex + 'px'});
+
+          console.log('index change');
         }
 
         if(numSlides != $scope.presentation.slides.length) {
