@@ -20,7 +20,10 @@
     </div>
     <div class='keywords'>
       <h3>Keywords</h3>
-      <ul ng-repeat="keyword in slideCurrent.keywords"><li>{{keyword}}<li></ul>
+      <div ng-repeat="keyword in slideCurrent.keywords">
+        <input type="text" ng-model="keyword" value={{keyword}} ng-change="updateKeywords(keyword, $index)">
+        </input>{{keyword}}
+      </div>
     </div>
   </div>
 

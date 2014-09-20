@@ -45,6 +45,11 @@ angular.module('banterApp')
         for (var i = event.resultIndex; i < event.results.length; ++i) {
           console.log(event.results[i][0].transcript);
           var word = event.results[i][0].transcript;
+
+          if(!event.results[i].isFinal) {
+            return;
+          }
+
           if(word.indexOf("next") > -1) {
             moveForward();
             return;
@@ -56,7 +61,7 @@ angular.module('banterApp')
           }
 
           for(var j = 0; j < $scope.slideCurrent.keywords.length; j++) {
-            if(word.indexOf($scope.slideCurrent.keywords[j]) > -1) {
+            if(word.indexOf($scope.slideCurrent.keywords[j].toLowerCase()) > -1) {
               moveForward();
               return;
             }
@@ -131,7 +136,10 @@ angular.module('banterApp')
       addPen();
     }, 100, false);
 
-
+    $scope.updateKeywords = function(word, i) {
+      console.log(i);
+      $scope.slideCurrent.keywords[i] = word;
+    };
 
     $('#forward').click(function() {
       moveForward();
@@ -141,7 +149,7 @@ angular.module('banterApp')
       moveBackward();
     });
 
-    $('#addSlide').click(function() {
+    $('#addslide').click(function() {
       $scope.presentation.slides.push({
         'content': '<h1>Header</h1><p>Content</p>',
         'keywords': ['Keyword']
