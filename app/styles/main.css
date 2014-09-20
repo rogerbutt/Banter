@@ -137,3 +137,57 @@ margin-left: 68px;
   margin-top:10px;
   margin-bottom:10px;
 }
+
+
+
+/** Main Menu Page CSS**/
+@font-face {
+    font-family: mainFont;
+    src: url(../fonts/BebasNeue.otf);
+}
+.mainMenu{
+  font-family:mainFont;
+}
+.mainMenu > .navbar-default{
+  background-color: rgba(0, 0, 0, 0.29);
+  border:0;
+}
+.navbar-default .navbar-nav > li > a {
+  color:#fff;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color:#f1c40f;
+}
+#banterMenu:hover{
+  color:#f1c40f;
+  text-decoration:none;
+}
+@media (min-width: 768px){
+.navbar-nav{
+  float: right;
+}
+.navbar-nav a {
+    font-size:30px;
+}
+}
+#banterMenu{
+  color:#fff;
+  font-size:40px;
+}
+.title {
+  text-transform:uppercase;
+  color:#f1c40f;  
+}
+.subtitle{
+
+}
+
+.titleContainer{
+  font-size:80px;
+  margin-top:70px;
+  color:#fff;
+}
+.highlighted{
+  background-color:#f1c40f;
+  color:black;
+}
