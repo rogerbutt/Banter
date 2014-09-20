@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('banterApp')
-  .controller('ClientCtrl', [ "$scope", "$sce", "$firebase",function ($scope, $sce, $firebase) {
+  .controller('ClientCtrl', [ "$scope", "$sce", "$timeout", "$firebase",function ($scope, $sce, $timeout, $firebase) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -25,21 +25,43 @@ angular.module('banterApp')
       unwatch = sync.$watch(function() {
         console.log("data changed!");
 
-        if($scope.presentation.index != slideIndex) {
-          slideIndex = $scope.presentation.index;
+        $timeout(function() {
+          if($scope.presentation.index != slideIndex) {
+            slideIndex = $scope.presentation.index;
 
-          $('.slide').velocity({ translateY: -400 * slideIndex + 'px'});
+            $('.slide').velocity({ translateY: (-400 * slideIndex).toString() + 'px'});
 
-          console.log('index change');
-        }
+            console.log((-400 * slideIndex).toString() + 'px');
+          }
 
-        if(numSlides != $scope.presentation.slides.length) {
-          $('.slide').last().velocity({ translateY: -400 * slideIndex + 'px'});
-        }
-
+          if(numSlides != $scope.presentation.slides.length) {
+            $('.slide').last().velocity({ translateY: (-400 * slideIndex).toString() + 'px'});
+          }
+        }, 50, false);
       });
+
     });
 
+    var rating;
 
+    $scope.rate = function(val) {
+      rating = val;
+      console.log(val);
+
+      $('.icon-star').css('color', 'white');
+      switch(val) {
+        case 5:
+          $('.ratings .icon-star:nth-child(5)').css("color", '#f1c40f');
+          console.log('here');
+        case 4:
+          $('.ratings .icon-star:nth-child(4)').css("color", '#f1c40f');
+        case 3:
+          $('.ratings .icon-star:nth-child(3)').css("color", '#f1c40f');
+        case 2:
+          $('.ratings .icon-star:nth-child(2)').css("color", '#f1c40f');
+        case 1:
+          $('.ratings .icon-star:nth-child(1)').css("color", '#f1c40f');
+      }
+    }
 
   }]);
